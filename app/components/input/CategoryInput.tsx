@@ -9,12 +9,12 @@ interface CategoryBoxProps {
     onClick: (value: string) => void;
 }
 
-const CategoryBox: React.FC<CategoryBoxProps> = ({
+export default function CategoryBox({
     icon: Icon,
     label,
     selected,
     onClick
-}) => {
+}: CategoryBoxProps) {
     return (
         <div
             onClick={() => onClick(label)}
@@ -38,5 +38,3 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
         </div>
     );
 }
-
-export default CategoryBox;

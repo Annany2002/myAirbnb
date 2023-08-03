@@ -10,7 +10,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import useSearchModal from '../hooks/useSearchModal';
 
 import Modal from "./Modal";
-import Calender from '../input/Calender';
+import Calendar from "../input/Calender";
 import Counter from "../input/Counter";
 import CountrySelect, {
     CountrySelectValue
@@ -40,9 +40,10 @@ const SearchModal = () => {
         key: 'selection'
     });
 
-    const Map = useMemo(() => dynamic(() => import('../../Map'), {
-        ssr: false
-    }), [location]);
+    const Map = useMemo(
+        () => dynamic(() => import('../../Map'), {
+            ssr: false
+        }), [location]);
 
     const onBack = useCallback(() => {
         setStep((value) => value - 1);
@@ -103,18 +104,18 @@ const SearchModal = () => {
 
     const actionLabel = useMemo(() => {
         if (step === STEPS.INFO) {
-            return 'Search';
+            return 'Search'
         }
 
-        return 'Next';
+        return 'Next'
     }, [step]);
 
     const secondaryActionLabel = useMemo(() => {
         if (step === STEPS.LOCATION) {
-            return undefined;
+            return undefined
         }
 
-        return 'Back';
+        return 'Back'
     }, [step]);
 
     let bodyContent = (
@@ -140,7 +141,7 @@ const SearchModal = () => {
                     title="When do you plan to go?"
                     subtitle="Make sure everyone is free!"
                 />
-                <Calender
+                <Calendar
                     onChange={(value) => setDateRange(value.selection)}
                     value={dateRange}
                 />
@@ -175,7 +176,7 @@ const SearchModal = () => {
                     }}
                     value={bathroomCount}
                     title="Bathrooms"
-                    subtitle="How many bathrooms do you need?"
+                    subtitle="How many bahtrooms do you need?"
                 />
             </div>
         )
